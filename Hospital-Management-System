@@ -1,33 +1,80 @@
-# Hospital Management System (Python)
+# Hospital Management System
+def show_menu():
+    print("\nHospital Management System")
+    print("1. Add Patient")
+    print("2. View Patients")
+    print("3. Search Patient")
+    print("4. Remove Patient")
+    print("5. Exit")
+def add_patient(patients, patient_set):
+    name = input("Enter patient name: ")
+    age = input("Enter patient age: ")
+    disease = input("Enter disease: ")
+    patient_id = len(patients) + 1
+    patient_tuple = (patient_id, name, age, disease)
+    patients.append(patient_tuple)
+    patient_set.add(name)
+    print("Patient added successfully!")
+def view_patients(patients):
+    if not patients:
+        print("No patients found.")
+        return
+    print("\nList of Patients:")
+    for p in patients:
+        print(f"ID: {p[0]}, Name: {p[1]}, Age: {p[2]}, Disease: {p[3]}"
 
-## Overview
+def search_patient(patients, name, index=0):
+    if index >= len(patients):
+        print("Patient not found.")
+        return
 
-This project is a Hospital Management System developed using Python to simulate basic hospital operations. It helps manage patient records, appointments, and data organization through a structured program design.
+    if patients[index][1].lower() == name.lower():
+        print(f"Patient Found - ID: {patients[index][0]}, "
+              f"Name: {patients[index][1]}, "
+              f"Age: {patients[index][2]}, "
+              f"Disease: {patients[index][3]}")
+        return
 
-## Features
+    search_patient(patients, name, index + 1)
+def remove_patient(patients, patient_set):
+    name = input("Enter patient name to remove: ")
 
-* Patient registration and record management
-* Appointment scheduling
-* Data storage and retrieval
-* Modular and easy-to-understand code structure
+    for p in patients:
+        if p[1].lower() == name.lower():
+            patients.remove(p)
+            patient_set.discard(name)
+            print("Patient removed successfully!")
+            return
 
-## Technologies Used
+    print("Patient not found.")
+# -------- Main Program --------
+def main():
+    patients = []
+    patient_set = set()
 
-* Python
+    while True:
+        show_menu()
+        choice = input("Enter your choice: ")
 
-## Learning Outcomes
+        if choice == "1":
+            add_patient(patients, patient_set)
 
-* Strengthened backend logic building
-* Improved data handling techniques
-* Practical implementation of structured programming concepts
+        elif choice == "2":
+            view_patients(patients)
 
-## How to Run
+        elif choice == "3":
+            name = input("Enter patient name to search: ")
+            search_patient(patients, name)
 
-1. Clone the repository
-2. Navigate to project directory
-3. Run:
-   python main.py
+        elif choice == "4":
+            remove_patient(patients, patient_set)
 
-## Author
+        elif choice == "5":
+            print("Exiting system...")
+            break
 
-Shobhit Pathak
+        else:
+            print("Invalid choice. Try again.")
+
+if __name__ == "__main__":
+    main()
