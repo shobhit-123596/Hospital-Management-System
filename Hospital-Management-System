@@ -1,0 +1,33 @@
+# Hospital Management System (Python)
+
+## Overview
+
+This project is a Hospital Management System developed using Python to simulate basic hospital operations. It helps manage patient records, appointments, and data organization through a structured program design.
+
+## Features
+
+* Patient registration and record management
+* Appointment scheduling
+* Data storage and retrieval
+* Modular and easy-to-understand code structure
+
+## Technologies Used
+
+* Python
+
+## Learning Outcomes
+
+* Strengthened backend logic building
+* Improved data handling techniques
+* Practical implementation of structured programming concepts
+
+## How to Run
+
+1. Clone the repository
+2. Navigate to project directory
+3. Run:
+   python main.py
+
+## Author
+
+Shobhit Pathak
